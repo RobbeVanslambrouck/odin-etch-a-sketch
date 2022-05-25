@@ -1,0 +1,135 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EEFBFB;
+}
+
+.wrapper{
+    width: 90%;
+    max-width: 96rem;
+    margin: 0 auto;
+}
+
+header {
+    height: 8rem;
+    background-color: #007CC7;
+    margin-bottom: 5rem;
+}
+
+h1 {
+    text-align: center;
+    line-height: 8rem;
+    margin: 0;
+}
+
+h1 a {
+    text-decoration: none;
+    color: #EEFBFB;
+}
+
+.mainContainer {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: max-content 1fr;
+    padding: 1rem;
+    background-color: #12232E;
+    border-radius: 1rem;
+
+}
+
+button {
+    background-color: #007CC7;
+    border: #EEFBFB solid 1px;
+    border-radius: 0.3rem;
+    color: #EEFBFB;
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+}
+
+#colorPicker {
+    background-color: #007CC7;
+    border: #EEFBFB solid 1px;
+    margin: 0.5rem 0;
+}
+
+.rainbowBorder {
+    border: 1px solid transparent;
+    border-radius: 0.3rem;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+}
+
+.rainbowBorder:hover {
+    border: 1px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+}
+
+button:hover {
+    background-color: #203647;
+    border: #EEFBFB solid 1px;
+
+}
+
+#canvasControls {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+#brushControls {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: max-content;
+}
+
+#colorPicker {
+    width: 100%;
+}
+
+#canvas {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 1rem;
+}
+
+.pixel {
+    margin: 0;
+    padding: 0;
+    background-color: #EEFBFB;
+    height: 1rem;
+    width: 1rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    text-align: center;
+    font-size: 1.4rem;
+    background-color: #007CC7;
+    color: #EEFBFB;
+}
+
+footer p {
+    display: inline;
+    line-height: 5rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: #EEFBFB;
+}
+
