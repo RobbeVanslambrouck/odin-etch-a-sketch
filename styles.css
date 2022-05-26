@@ -11,6 +11,7 @@ body {
 
 .wrapper{
     width: 90%;
+    height: calc(100vh - 10rem - 13rem);
     max-width: 96rem;
     margin: 0 auto;
 }
@@ -39,7 +40,9 @@ h1 a {
     padding: 1rem;
     background-color: #12232E;
     border-radius: 1rem;
-
+    width: fit-content;
+    gap: 1rem;
+    margin: 0 auto;
 }
 
 button {
@@ -100,21 +103,51 @@ button:hover {
 #canvas {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    padding: 1rem;
+    display: grid;
+    width: 10rem;
+    height: 10rem;
+}
+
+@media screen and (min-width: 300px) {
+    
+    #canvas {
+        width: 15rem;
+        height: 15rem;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    
+    #canvas {
+        width: 20rem;
+        height: 20rem;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    
+    #canvas {
+        width: 30rem;
+        height: 30rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    
+    #canvas {
+        width: 40rem;
+        height: 40rem;
+    }
 }
 
 .pixel {
     margin: 0;
     padding: 0;
-    background-color: #EEFBFB;
-    height: 1rem;
-    width: 1rem;
+    background-color: #FFFFFF;
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    margin-top: 5rem;
     width: 100%;
     height: 5rem;
     text-align: center;
