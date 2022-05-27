@@ -43,8 +43,9 @@ h1 a {
 
 .mainContainer {
     display: grid;
-    grid-template-columns: max-content 1fr;
-    grid-template-rows: max-content 1fr;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content max-content;
+    justify-items: center;
     padding: 1rem;
     background-color: #12232E;
     border-radius: 1rem;
@@ -102,8 +103,6 @@ button:hover {
 }
 
 #canvasControls {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,8 +113,6 @@ button:hover {
 }
 
 #brushControls {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -127,51 +124,9 @@ button:hover {
 }
 
 #canvas {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
     display: grid;
-    width: 10rem;
-    height: 10rem;
-}
-
-@media screen and (min-width: 300px) {
-    
-    #canvas {
-        width: 15rem;
-        height: 15rem;
-    }
-}
-
-@media screen and (min-width: 400px) {
-    
-    #canvas {
-        width: 20rem;
-        height: 20rem;
-    }
-}
-
-@media screen and (min-width: 500px) {
-    
-    #canvas {
-        width: 30rem;
-        height: 30rem;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    
-    #canvas {
-        width: 40rem;
-        height: 40rem;
-    }
-}
-
-@media screen and (min-width: 800px) {
-    
-    #canvas {
-        width: 50rem;
-        height: 50rem;
-    }
+    width: 25rem;
+    height: 25rem;
 }
 
 .pixel {
@@ -200,3 +155,46 @@ footer a {
     color: #EEFBFB;
 }
 
+@media screen and (min-width: 500px) {
+    
+    .mainContainer {
+        grid-template-columns: max-content 1fr;
+        grid-template-rows: max-content 1fr;
+        justify-items: stretch;
+    }
+
+    #canvasControls {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    #canvas {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        width: 30rem;
+        height: 30rem;
+    }
+
+    #brushControls {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    
+    #canvas {
+        width: 40rem;
+        height: 40rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    
+    #canvas {
+        width: 50rem;
+        height: 50rem;
+    }
+}
