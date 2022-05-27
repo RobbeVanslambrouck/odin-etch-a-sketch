@@ -19,7 +19,7 @@
     </header>
         <main class="wrapper">
             <div class="mainContainer">
-                <form action="" id="canvasControls">
+                <form action="" onsubmit="event.preventDefault();" id="canvasControls">
                     <label for="resolutionPicker" class="hidden">resolution</label>
                     <input type="number" name="resolutionPicker" id="resolutionPicker" max="100" min="1" value="16">
                     <div>
@@ -35,7 +35,7 @@
                 </form>
                 <div id="canvas">
                 </div>
-                <form action="" id="brushControls">
+                <form action="" onsubmit="event.preventDefault();" id="brushControls">
                     <label for="colorPicker" class="hidden">color picker</label>
                     <input type="color" name="colorPicker" id="colorPicker">
                     <label for="btnRgb" class="hidden">rgb brush</label>
