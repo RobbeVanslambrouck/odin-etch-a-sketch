@@ -19,18 +19,32 @@
     </header>
         <main class="wrapper">
             <div class="mainContainer">
-                <div id="canvasControls">
+                <form action="" id="canvasControls">
+                    <label for="resolutionPicker" class="hidden">resolution</label>
                     <input type="number" name="resolutionPicker" id="resolutionPicker" max="100" min="1" value="16">
-                    <button id="btnClear">clear</button>
-                </div>
+                    <div>
+                        <label for="brushstroke"><i class="fa-solid fa-paintbrush"></i> stroke</label>
+                        <select name="brushstroke" id="brushstroke">
+                            <option value="toggle">toggle</option>
+                            <option value="continuous">continuous</option>
+                            <option value="click">click</option>
+                        </select>
+                    </div>
+                    <label for="btnClear" class="hidden">clear canvas</label>
+                    <button type="button" id="btnClear">clear</button>
+                </form>
                 <div id="canvas">
                 </div>
-                <div id="brushControls">
+                <form action="" id="brushControls">
+                    <label for="colorPicker" class="hidden">color picker</label>
                     <input type="color" name="colorPicker" id="colorPicker">
-                    <button id="btnRgb">RGB</button>
-                    <button id="btnRainbow" class="rainbowBorder">rainbow</button>
-                    <button id="btnEraser"><i class="fa-solid fa-eraser"></i></button>
-                </div>
+                    <label for="btnRgb" class="hidden">rgb brush</label>
+                    <button type="button" id="btnRgb">RGB</button>
+                    <label for="btnRainbow" class="hidden">rainbow brush</label>
+                    <button type="button" id="btnRainbow" class="rainbowBorder">rainbow</button>
+                    <label for="btnEraser" class="hidden">eraser</label>
+                    <button type="button" id="btnEraser"><i class="fa-solid fa-eraser"></i></button>
+                </form>
             </div>
         </main>
     </div>

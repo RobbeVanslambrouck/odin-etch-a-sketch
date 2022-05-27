@@ -5,6 +5,7 @@ const btnClear = document.querySelector("#btnClear");
 const btnEraser = document.querySelector("#btnEraser");
 const btnRgb = document.querySelector("#btnRgb");
 const btnRainbow = document.querySelector("#btnRainbow");
+const selectBrushType = document.querySelector("#brushstroke");
 
 const Brushes = {
     color: "color",
@@ -13,6 +14,14 @@ const Brushes = {
     rainbow: "rainbow"
 };
 
+const BrushType = {
+    continuous: "continuous",
+    click: "click",
+    toggle: "toggle"
+};
+
+let eventType = "mouseenter";
+let brushStroke = BrushType.toggle;
 let colorPickerColor = randomColor();
 inputColorPicker.value = colorPickerColor;
 let currentColor = "";
@@ -54,6 +63,41 @@ inputColorPicker.addEventListener("change", (e) => {
 });
 
 inputRes.addEventListener('change', updateCanvasSize);
+
+selectBrushType.addEventListener("change", (e) => {
+    if (e.target.value === "continuous") {
+        brushStroke = BrushType.continuous;
+        eventType = "mouseenter";
+    }
+    if (e.target.value === "click") {
+        brushStroke = BrushType.click;
+        eventType = "click";
+    }
+    if (e.target.value === "toggle") {
+        brushStroke = BrushType.toggle;
+    }
+    updatePixelEvents();
+});
+
+divCanvas.addEventListener('click', (e) => {
+    console.log("click canvas")
+    if (brushStroke === BrushType.toggle) {
+        eventType = toggleBrushType(eventType);
+        updatePixelEvents();
+    }
+});
+
+function updatePixelEvents() {
+    divCanvas.childNodes.forEach(element => {
+        element.removeEventListener("click", paintPixel);
+        element.removeEventListener("mouseenter", paintPixel);
+        element.addEventListener(eventType, paintPixel);
+    });
+}
+
+function toggleBrushType(eventType) {
+    return eventType === "mouseenter" ? "click" : "mouseenter";
+}
 
 function changeBrush(brush) {
     previousBrush = currentBrush;
@@ -117,7 +161,7 @@ function clearCanvas() {
 }
 
 function deleteCanvas() {
-    divCanvas.replaceChildren()
+    divCanvas.replaceChildren();
 }
 
 function createCanvas(size) {
@@ -128,12 +172,12 @@ function createCanvas(size) {
     for (let i = 0; i < size**2; i++) {
         let pixel = document.createElement("div");
         pixel.className = "pixel"
-        pixel.addEventListener("mouseenter", hoverPixel);
+        pixel.addEventListener(eventType, paintPixel);
         divCanvas.appendChild(pixel);        
     }
 }
 
-function hoverPixel(pixel) {
+function paintPixel(pixel) {
     pixel.target.style.backgroundColor = currentColor;
     if (currentBrush === Brushes.rgb) {
         currentColor = randomColor();

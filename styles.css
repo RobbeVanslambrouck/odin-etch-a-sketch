@@ -7,11 +7,14 @@ body {
     margin: 0;
     padding: 0;
     background-color: #EEFBFB;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 .wrapper{
     width: 90%;
-    height: calc(100vh - 10rem - 13rem);
     max-width: 96rem;
     margin: 0 auto;
 }
@@ -33,6 +36,11 @@ h1 a {
     color: #EEFBFB;
 }
 
+.hidden {
+    position: absolute;
+    left: -999rem;
+}
+
 .mainContainer {
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -52,7 +60,20 @@ button {
     color: #EEFBFB;
     font-size: 1.4rem;
     margin: 0.5rem 0;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+form {
+    color: #EEFBFB;
+}
+
+select {
+    height: 2.6rem;
+}
+
+label {
+    margin-right: 0.5rem;
+    font-size: 1.4rem;
 }
 
 #colorPicker {
@@ -85,6 +106,11 @@ button:hover {
     grid-row: 1 / 2;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+#resolutionPicker {
+    height: 2rem;
 }
 
 #brushControls {
@@ -92,7 +118,7 @@ button:hover {
     grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: max-content;
 }
 
@@ -137,6 +163,14 @@ button:hover {
     #canvas {
         width: 40rem;
         height: 40rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    
+    #canvas {
+        width: 50rem;
+        height: 50rem;
     }
 }
 
