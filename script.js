@@ -4,6 +4,7 @@ const inputColorPicker = document.querySelector("#colorPicker");
 const btnClear = document.querySelector("#btnClear");
 const btnEraser = document.querySelector("#btnEraser");
 const btnRgb = document.querySelector("#btnRgb");
+const btnRainbow = document.querySelector("#btnRainbow");
 
 const Brushes = {
     color: "color",
@@ -15,6 +16,7 @@ const Brushes = {
 let colorPickerColor = randomColor();
 inputColorPicker.value = colorPickerColor;
 let currentColor = "";
+let currentHue = 0;
 let currentBrush = Brushes.color;
 let previousBrush = Brushes.color; 
 changeBrush(Brushes.color);
@@ -23,22 +25,23 @@ let resolution = parseInt(inputRes.value);
 btnEraser.addEventListener("click", (e) => {
     if (currentBrush != Brushes.eraser) {
         changeBrush(Brushes.eraser);
-        btnEraser.style.backgroundColor = "#203647";
         return;
     } 
     changeBrush(previousBrush);
-    btnEraser.style.backgroundColor = "#007CC7";
-
 });
 
 btnRgb.addEventListener("click", (e) => {
     if (currentBrush != Brushes.rgb) {
         changeBrush(Brushes.rgb);
-        btnRgb.style.backgroundColor = "#203647";
         return;
     }
     changeBrush(Brushes.color);
-    btnRgb.style.backgroundColor = "#007CC7";
+});
+
+btnRainbow.addEventListener("click", (e) => {
+    if (currentBrush != Brushes.rainbow) {
+        changeBrush(Brushes.rainbow);
+    }
 });
 
 btnClear.addEventListener("click", (e) => {
@@ -57,6 +60,7 @@ function changeBrush(brush) {
     currentBrush = brush;
     btnEraser.style.backgroundColor = "#007CC7";
     btnRgb.style.backgroundColor = "#007CC7";
+    btnRainbow.style.backgroundColor = "#007CC7";
     inputColorPicker.style.backgroundColor = "#007CC7";
 
     if (brush === Brushes.color) {
@@ -72,6 +76,11 @@ function changeBrush(brush) {
     if (brush === Brushes.rgb) {
         currentColor = randomColor();
         btnRgb.style.backgroundColor = "#203647";
+    }
+
+    if (brush === Brushes.rainbow) {
+        currentColor = "hsl(" + currentHue + ", 100%, 50%)";
+        btnRainbow.style.backgroundColor = "#203647";
     }
 }
 
@@ -95,6 +104,10 @@ function randomColor() {
 function updateCanvasSize(e) {
     deleteCanvas();
     createCanvas(parseInt(e.srcElement.value))
+}
+
+function rainbowColor(hue, step) {
+    return (hue + step) % 360;
 }
 
 function clearCanvas() {
@@ -124,6 +137,11 @@ function hoverPixel(pixel) {
     pixel.target.style.backgroundColor = currentColor;
     if (currentBrush === Brushes.rgb) {
         currentColor = randomColor();
+        return;
+    }
+    if (currentBrush === Brushes.rainbow) {
+        currentHue = rainbowColor(currentHue, 1);
+        currentColor = "hsl(" + currentHue + ", 100%, 50%)";
     }
 }
 
